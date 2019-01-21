@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-udemy-restserver",
+  "version": "1.0.0",
+  "description": "aprendiendo sobre RESTservers",
+  "main": "index.js",
+  "scripts": {
+    "nodemon": "nodemon server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jhull Rondon",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
