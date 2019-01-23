@@ -1,7 +1,9 @@
 require('./config/config');
 
+const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
+
 
 const bodyParser = require('body-parser');
 // parse application/x-www-form-urlencoded
@@ -15,33 +17,13 @@ app.get('/', (req, res) => {
   res.json('Hello World');
 });
 
-app.get('/usuario', (req, res) => {
-  res.json(`Get usuario`);
-});
+app.use(require('./routes/usuario'));
 
-app.post('/usuario', (req, res) => {
+// conectando a la base de datos
 
-  let body = req.body;
-
-  if (body.nombre === undefined) {
-    res.status(400).json({
-      ok: false,
-      message: "el nombre es necesario"
-    });
-  }
-  res.json({persona: body});
-});
-
-app.put('/usuario/:id', (req, res) => {
-  //get the parameter in the url to make an update throught the method PUT
-  let id = req.params.id;
-
-  res.json({
-    id
-  });
-});
-app.delete('/usuario', (req, res) => {
-  res.json('Delete de Usuario');
+mongoose.connect(process.env.URLDB, { useNewUrlParser: true }, (err) => {
+  if (err) throw err;
+  console.log('base de datos ONLINE');
 });
 
 app.listen(process.env.PORT, () => {
