@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 
-
 const bodyParser = require('body-parser');
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -17,7 +16,8 @@ app.get('/', (req, res) => {
   res.json('Hello World');
 });
 
-app.use(require('./routes/usuario'));
+// Configuracion de todas la rutas
+app.use(require('./routes/index'));
 
 // conectando a la base de datos
 
