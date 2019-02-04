@@ -135,7 +135,7 @@ function imagenProducto(id, res, nombreArchivo) {
       });
     }
 
-    borraArchivo(productoDB.img, 'productos');
+    //borraArchivo(productoDB.img, 'productos');
 
     productoDB.img = nombreArchivo;
 
