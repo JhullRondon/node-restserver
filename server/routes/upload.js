@@ -56,7 +56,7 @@ app.put('/upload/:tipo/:id', (req, res) => {
 
   //cambiar el nombre del archivo
   let nombreArchivo = `${id}-${new Date().getMilliseconds()}.${extencion}`
-  archivo.mv(`uploads/${tipo}/${nombreArchivo}`, (err) => {
+  archivo.mv(path.resolve(__dirname, `../../uploads/${tipo}/${nombreImagen}`), (err) => {
     if (err) {
       return res.status(500).json({
         ok: false,
@@ -118,7 +118,7 @@ function imagenUsuario(id, res, nombreArchivo) {
 function imagenProducto(id, res, nombreArchivo) {
   Producto.findById(id, (err, productoDB) => {
     if (err) {
-      borraArchivo(nombreArchivo, 'productos');
+      //borraArchivo(nombreArchivo, 'productos');
       return res.status(500).json({
         ok: false,
         err
@@ -126,7 +126,7 @@ function imagenProducto(id, res, nombreArchivo) {
     }
 
     if (!productoDB) {
-      borraArchivo(nombreArchivo, 'productos');
+      //borraArchivo(nombreArchivo, 'productos');
       return res.status(400).json({
         ok: false,
         err: {
