@@ -118,7 +118,7 @@ function imagenUsuario(id, res, nombreArchivo) {
 function imagenProducto(id, res, nombreArchivo) {
   Producto.findById(id, (err, productoDB) => {
     if (err) {
-      //borraArchivo(nombreArchivo, 'productos');
+      borraArchivo(nombreArchivo, 'productos');
       return res.status(500).json({
         ok: false,
         err
@@ -126,7 +126,7 @@ function imagenProducto(id, res, nombreArchivo) {
     }
 
     if (!productoDB) {
-      //borraArchivo(nombreArchivo, 'productos');
+      borraArchivo(nombreArchivo, 'productos');
       return res.status(400).json({
         ok: false,
         err: {
@@ -135,7 +135,7 @@ function imagenProducto(id, res, nombreArchivo) {
       });
     }
 
-    //borraArchivo(productoDB.img, 'productos');
+    borraArchivo(productoDB.img, 'productos');
 
     productoDB.img = nombreArchivo;
 
